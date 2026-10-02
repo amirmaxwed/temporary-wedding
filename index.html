@@ -24,8 +24,6 @@ body {
   color: #333;
 }
 
-/* HERO */
-
 .hero {
   width: 100%;
   margin: 0;
@@ -54,6 +52,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 
 /* INVITATION */
 
@@ -84,6 +83,391 @@ body {
   font-size: 14px;
 }
 
+
+/* WEDDING DATE */
+
+.date-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px 20px 65px;
+  text-align: center;
+}
+
+.date-title {
+  margin: 0 0 15px;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.date-text {
+  margin: 0 0 30px;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* CALENDAR */
+
+.calendar-box {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 25px 22px 28px;
+  background: #d4e9ba;
+  border-radius: 12px;
+}
+
+.calendar-month {
+  margin-bottom: 20px;
+  font-size: 24px;
+  letter-spacing: 3px;
+}
+
+.calendar-weekdays,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.calendar-weekdays {
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+
+.calendar-days {
+  row-gap: 14px;
+  font-size: 14px;
+}
+
+.calendar-days span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.calendar-days .wedding-day {
+  color: #fff;
+  background: #47713b;
+  border-radius: 50%;
+  font-weight: 600;
+}
+
+
+/* COUNTDOWN */
+
+.countdown-divider {
+  width: 85%;
+  height: 1px;
+  margin: 25px auto 22px;
+  background: rgba(70, 100, 55, 0.35);
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.countdown-item {
+  min-width: 48px;
+  text-align: center;
+}
+
+.countdown-number {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.countdown-label {
+  margin-top: 3px;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.days-message {
+  margin-top: 22px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.heart {
+  color: #719c55;
+}
+
+
+/* CEREMONY INFORMATION */
+
+.ceremony-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 25px 25px 60px;
+  text-align: center;
+}
+
+.ceremony-title {
+  margin: 0 0 25px;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.ceremony-info {
+  line-height: 2;
+  font-size: 14px;
+}
+
+.venue {
+  margin-top: 18px;
+  font-size: 16px;
+}
+
+.address {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+
+/* NAVIGATION BUTTONS */
+
+.map-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 25px auto 30px;
+  flex-wrap: wrap;
+}
+
+.map-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 82px;
+  padding: 10px 13px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 12px;
+  color: #333;
+  background: #d4e9ba;
+  transition: opacity 0.2s ease;
+}
+
+.map-button:hover {
+  opacity: 0.75;
+}
+
+
+/* MAP */
+
+.map-container {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.map-container iframe {
+  display: block;
+  width: 100%;
+  height: 300px;
+  border: 0;
+}
+
+
+/* HAPPY TIME */
+
+.happy-time {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 65px 20px 30px;
+  text-align: center;
+}
+
+.happy-time-title {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+
+/* GALLERY */
+
+.gallery {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 15px 15px 65px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.gallery-item {
+  display: block;
+  width: 100%;
+  height: 170px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  background: transparent;
+}
+
+.gallery-item.large {
+  height: 230px;
+}
+
+.gallery-item:nth-child(1),
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(3) {
+  grid-column: span 2;
+}
+
+.gallery-item:nth-child(4),
+.gallery-item:nth-child(5) {
+  grid-column: span 3;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* LIGHTBOX */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  color: white;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+
+/* ACCOUNT SECTION */
+
+.account-section {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 15px 20px 80px;
+  text-align: center;
+}
+
+.account-title {
+  margin: 0 0 22px;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.account-toggle {
+  width: 100%;
+  min-height: 52px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 13px 55px 13px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #d4e9ba;
+  color: #333;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.account-toggle::after {
+  content: "⌄";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+
+.account-content {
+  max-height: 0;
+  overflow: hidden;
+  width: 100%;
+  background: #e2f5c9;
+  border-radius: 0 0 6px 6px;
+  transition: max-height 0.4s ease;
+}
+
+.account-content.open {
+  max-height: 300px;
+}
+
+.account-person {
+  padding: 18px 15px;
+  text-align: left;
+  border-bottom: 1px solid rgba(70, 100, 55, 0.18);
+}
+
+.account-person:last-child {
+  border-bottom: none;
+}
+
+.account-name {
+  margin-bottom: 7px;
+  font-size: 13px;
+}
+
+.account-number {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.copy-button {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  padding: 3px 5px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #555;
+}
+
+
 /* MOBILE */
 
 @media (max-width: 600px) {
@@ -100,12 +484,54 @@ body {
     font-size: 14px;
   }
 
+  .date-section {
+    padding-top: 20px;
+  }
+
+  .calendar-box {
+    max-width: 330px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .calendar-days span {
+    width: 28px;
+    height: 28px;
+  }
+
+  .countdown {
+    gap: 12px;
+  }
+
+  .countdown-number {
+    font-size: 20px;
+  }
+
+  .gallery {
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 7px;
+  }
+
+  .gallery-item {
+    height: 120px;
+  }
+
+  .gallery-item.large {
+    height: 170px;
+  }
+
+  .map-container iframe {
+    height: 260px;
+  }
+
 }
 
 </style>
 </head>
 
 <body>
+
 
 <!-- HERO -->
 
@@ -152,6 +578,403 @@ body {
   </div>
 
 </section>
+
+
+<!-- WEDDING DATE -->
+
+<section class="date-section">
+
+  <h2 class="date-title">
+    예식 일정
+  </h2>
+
+  <p class="date-text">
+    2026년 11월 14일 토요일 오후 6시 40분
+  </p>
+
+  <div class="calendar-box">
+
+    <div class="calendar-month">
+      11월
+    </div>
+
+    <div class="calendar-weekdays">
+      <span>일</span>
+      <span>월</span>
+      <span>화</span>
+      <span>수</span>
+      <span>목</span>
+      <span>금</span>
+      <span>토</span>
+    </div>
+
+    <div class="calendar-days">
+
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+      <span>6</span>
+      <span>7</span>
+
+      <span>8</span>
+      <span>9</span>
+      <span>10</span>
+      <span>11</span>
+      <span>12</span>
+      <span>13</span>
+      <span class="wedding-day">14</span>
+
+      <span>15</span>
+      <span>16</span>
+      <span>17</span>
+      <span>18</span>
+      <span>19</span>
+      <span>20</span>
+      <span>21</span>
+
+      <span>22</span>
+      <span>23</span>
+      <span>24</span>
+      <span>25</span>
+      <span>26</span>
+      <span>27</span>
+      <span>28</span>
+
+      <span>29</span>
+      <span>30</span>
+
+    </div>
+
+    <div class="countdown-divider"></div>
+
+    <div class="countdown">
+
+      <div class="countdown-item">
+        <div class="countdown-number" id="days">0</div>
+        <div class="countdown-label">Day</div>
+      </div>
+
+      <div class="countdown-item">
+        <div class="countdown-number" id="hours">0</div>
+        <div class="countdown-label">Hour</div>
+      </div>
+
+      <div class="countdown-item">
+        <div class="countdown-number" id="minutes">0</div>
+        <div class="countdown-label">Min</div>
+      </div>
+
+      <div class="countdown-item">
+        <div class="countdown-number" id="seconds">0</div>
+        <div class="countdown-label">Sec</div>
+      </div>
+
+    </div>
+
+    <div class="days-message">
+      Max <span class="heart">♥</span> Sophy(경미)의 결혼식이
+      <span id="days-left">0</span>일 남았습니다
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CEREMONY INFORMATION -->
+
+<section class="ceremony-section">
+
+  <h2 class="ceremony-title">
+    예식 안내
+  </h2>
+
+  <div class="ceremony-info">
+
+    <div class="venue">
+      가천컨벤션센터 5층(컨벤션홀)
+    </div>
+
+    <div class="address">
+      경기 성남시 수정구 성남대로 1342
+    </div>
+
+  </div>
+
+
+  <div class="map-buttons">
+
+    <a
+      class="map-button"
+      href="https://map.naver.com/p/search/경기%20성남시%20수정구%20성남대로%201342%20가천컨벤션센터"
+      target="_blank"
+    >
+      Naver 지도
+    </a>
+
+    <a
+      class="map-button"
+      href="https://tmap.life/"
+      target="_blank"
+    >
+      T MAP
+    </a>
+
+    <a
+      class="map-button"
+      href="https://map.kakao.com/link/to/가천컨벤션센터,37.44986137205021,127.127146484771"
+      target="_blank"
+    >
+      Kakao 지도
+    </a>
+
+  </div>
+
+
+  <div class="map-container">
+
+    <iframe
+      src="https://www.google.com/maps?q=가천컨벤션센터+경기+성남시+수정구+성남대로+1342&output=embed"
+      loading="lazy"
+      allowfullscreen
+    ></iframe>
+
+  </div>
+
+</section>
+
+
+<!-- HAPPY TIME -->
+
+<section class="happy-time">
+
+  <h2 class="happy-time-title">
+    A happy time
+  </h2>
+
+</section>
+
+
+<!-- PHOTO GALLERY -->
+
+<section class="gallery">
+
+  <button class="gallery-item" onclick="openLightbox('photo1.jpg')">
+    <img src="photo1.jpg" alt="Wedding photo 1">
+  </button>
+
+  <button class="gallery-item" onclick="openLightbox('photo2.jpg')">
+    <img src="photo2.jpg" alt="Wedding photo 2">
+  </button>
+
+  <button class="gallery-item" onclick="openLightbox('photo3.jpg')">
+    <img src="photo3.jpg" alt="Wedding photo 3">
+  </button>
+
+  <button class="gallery-item large" onclick="openLightbox('photo4.jpg')">
+    <img src="photo4.jpg" alt="Wedding photo 4">
+  </button>
+
+  <button class="gallery-item large" onclick="openLightbox('photo5.jpg')">
+    <img src="photo5.jpg" alt="Wedding photo 5">
+  </button>
+
+</section>
+
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+
+  <span class="lightbox-close">&times;</span>
+
+  <img id="lightbox-image" src="" alt="Wedding photo">
+
+</div>
+
+
+<!-- ACCOUNT -->
+
+<section class="account-section">
+
+  <h2 class="account-title">
+    마음 전하실 곳
+  </h2>
+
+  <button
+    class="account-toggle"
+    onclick="toggleAccount()"
+  >
+    계좌번호
+  </button>
+
+  <div class="account-content" id="accountContent">
+
+    <div class="account-person">
+
+      <div class="account-name">
+        신랑 Max
+      </div>
+
+      <div class="account-number">
+
+        <span>
+          신한은행 110-670-8885048
+        </span>
+
+        <button
+          class="copy-button"
+          onclick="copyAccount('110-670-8885048', event)"
+          aria-label="계좌번호 복사"
+        >
+          ⧉
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="account-person">
+
+      <div class="account-name">
+        신부 최경미
+      </div>
+
+      <div class="account-number">
+
+        <span>
+          신한은행 110-630-874058
+        </span>
+
+        <button
+          class="copy-button"
+          onclick="copyAccount('110-630-874058', event)"
+          aria-label="계좌번호 복사"
+        >
+          ⧉
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+
+/* COUNTDOWN */
+
+const weddingDate = new Date("2026-11-14T18:40:00+09:00").getTime();
+
+function updateCountdown() {
+
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+
+  if (distance <= 0) {
+
+    document.getElementById("days").textContent = "0";
+    document.getElementById("hours").textContent = "0";
+    document.getElementById("minutes").textContent = "0";
+    document.getElementById("seconds").textContent = "0";
+    document.getElementById("days-left").textContent = "0";
+
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(
+    (distance % (1000 * 60 * 60 * 24)) /
+    (1000 * 60 * 60)
+  );
+
+  const minutes = Math.floor(
+    (distance % (1000 * 60 * 60)) /
+    (1000 * 60)
+  );
+
+  const seconds = Math.floor(
+    (distance % (1000 * 60)) /
+    1000
+  );
+
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
+  document.getElementById("days-left").textContent = days;
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+
+/* ACCOUNT */
+
+function toggleAccount() {
+
+  const content = document.getElementById("accountContent");
+
+  content.classList.toggle("open");
+
+}
+
+
+/* COPY ACCOUNT */
+
+function copyAccount(accountNumber, event) {
+
+  event.stopPropagation();
+
+  navigator.clipboard.writeText(accountNumber);
+
+  const button = event.currentTarget;
+  const original = button.textContent;
+
+  button.textContent = "✓";
+
+  setTimeout(function() {
+    button.textContent = original;
+  }, 1200);
+
+}
+
+
+/* LIGHTBOX */
+
+function openLightbox(image) {
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightbox-image");
+
+  lightboxImage.src = image;
+  lightbox.classList.add("active");
+
+}
+
+
+function closeLightbox() {
+
+  document.getElementById("lightbox").classList.remove("active");
+
+}
+
+</script>
 
 
 </body>
