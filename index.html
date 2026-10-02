@@ -9,6 +9,26 @@
 
 <style>
 
+.music-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #555;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.music-button.playing {
+  font-size: 19px;
+}
+  
 * {
   box-sizing: border-box;
 }
@@ -535,7 +555,13 @@ body {
 </head>
 
 <body>
+<audio id="weddingMusic" loop>
+  <source src="Max and Sophy.mp3" type="audio/mpeg">
+</audio>
 
+<button id="musicButton" class="music-button" aria-label="Play music">
+  ♪
+</button>
 
 <!-- HERO -->
 
@@ -978,6 +1004,21 @@ function closeLightbox() {
 
 }
 
+const weddingMusic = document.getElementById("weddingMusic");
+const musicButton = document.getElementById("musicButton");
+
+musicButton.addEventListener("click", () => {
+  if (weddingMusic.paused) {
+    weddingMusic.play();
+    musicButton.textContent = "Ⅱ";
+    musicButton.classList.add("playing");
+  } else {
+    weddingMusic.pause();
+    musicButton.textContent = "♪";
+    musicButton.classList.remove("playing");
+  }
+});
+  
 </script>
 
 
