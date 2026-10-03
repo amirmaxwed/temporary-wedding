@@ -338,13 +338,25 @@ body {
 }
 
 .address-copy-button {
-  border: none;
-  background: transparent;
-  padding: 3px 5px;
-  font-size: 16px;
+  width: 27px;
+  height: 27px;
+  padding: 0;
+  border: 1px solid #b8cda9;
+  border-radius: 50%;
+  background: #f7fbf3;
   color: #47713b;
+  font-size: 14px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   line-height: 1;
+  transition: all 0.25s ease;
+}
+
+.address-copy-button:hover {
+  background: #e2f5c9;
+  transform: translateY(-1px);
 }
 
 .address-copy-button:hover {
