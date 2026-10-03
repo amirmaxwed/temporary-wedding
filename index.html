@@ -1048,35 +1048,35 @@ musicButton.addEventListener("click", () => {
 
 /* SCROLL-UP REVEAL EFFECT */
 
-document.addEventListener("DOMContentLoaded", function () {
+const revealElements = document.querySelectorAll(
+  ".intro, .date-section, .ceremony-section, .happy-time, .gallery, .account-section, .wedding-footer"
+);
 
-  const revealElements = document.querySelectorAll(
-    ".intro, .date-section, .ceremony-section, .happy-time, .gallery, .account-section, .wedding-footer"
-  );
+/* Hide all sections first */
+revealElements.forEach(function (element) {
+  element.classList.add("scroll-reveal");
+});
 
-  const revealObserver = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("scroll-reveal");
-          
-          setTimeout(function () {
-            entry.target.classList.add("show");
-          }, 50);
+/* Show sections when they enter the screen */
+const revealObserver = new IntersectionObserver(
+  function (entries) {
+    entries.forEach(function (entry) {
 
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.15
-    }
-  );
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        revealObserver.unobserve(entry.target);
+      }
 
-  revealElements.forEach(function (element) {
-    revealObserver.observe(element);
-  });
+    });
+  },
+  {
+    threshold: 0.15
+  }
+);
 
+/* Start watching each section */
+revealElements.forEach(function (element) {
+  revealObserver.observe(element);
 });
 
   
