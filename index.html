@@ -895,13 +895,21 @@ body {
 
     </div>
 
-    <div class="days-message">
-      Max <span class="heart">♥</span> Sophy(경미)의 결혼식이
-      <span id="days-left">0</span>일 남았습니다
-    </div>
+ <div class="days-message" id="daysMessage">
+  <span id="countdown-ko">
+    Max <span class="heart">♥</span> Sophy(경미)의 결혼식이
+    <span id="days-left">0</span>일 남았습니다
+  </span>
 
-  </div>
+  <span id="countdown-en" style="display:none;">
+    <span id="days-left-en">0</span> days left until Max <span class="heart">♥</span> Sophy (Kyung-mi)'s wedding
+  </span>
 
+  <span id="countdown-fa" style="display:none;">
+    تا مراسم عروسی مکس <span class="heart">♥</span> سوفی (کیونگ‌می)
+    <span id="days-left-fa">۰</span> روز باقی مانده است
+  </span>
+</div>
 </section>
 
 
@@ -1135,6 +1143,8 @@ function updateCountdown() {
   document.getElementById("minutes").textContent = minutes;
   document.getElementById("seconds").textContent = seconds;
   document.getElementById("days-left").textContent = days;
+  document.getElementById("days-left-en").textContent = days;
+document.getElementById("days-left-fa").textContent = days;
 
 }
 
@@ -1305,7 +1315,9 @@ document.addEventListener("click", function () {
 /* LANGUAGE CHANGE */
 
 function changeLanguage(language) {
+
   document.documentElement.dir = language === "fa" ? "rtl" : "ltr";
+
   const elements = document.querySelectorAll("[data-ko]");
 
   elements.forEach(function(element) {
@@ -1323,6 +1335,18 @@ function changeLanguage(language) {
     }
 
   });
+
+  /* COUNTDOWN LANGUAGE */
+
+  document.getElementById("countdown-ko").style.display =
+    language === "ko" ? "inline" : "none";
+
+  document.getElementById("countdown-en").style.display =
+    language === "en" ? "inline" : "none";
+
+  document.getElementById("countdown-fa").style.display =
+    language === "fa" ? "inline" : "none";
+
 
   document.getElementById("languageButton").textContent =
     language === "ko" ? "한국어" :
