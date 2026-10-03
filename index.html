@@ -330,6 +330,27 @@ body {
   font-size: 13px;
 }
 
+.address-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.address-copy-button {
+  border: none;
+  background: transparent;
+  padding: 3px 5px;
+  font-size: 16px;
+  color: #47713b;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.address-copy-button:hover {
+  opacity: 0.7;
+}
+
 
 /* NAVIGATION BUTTONS */
 
@@ -964,11 +985,23 @@ body {
   가천컨벤션센터 5층(컨벤션홀)
 </div>
 
-<div class="address"
-     data-ko="경기 성남시 수정구 성남대로 1342"
-     data-en="1342 Seongnam-daero, Sujeong-gu, Seongnam-si, Gyeonggi-do"
-     data-fa="استان گیونگ‌گی، شهر سونگنام، منطقه سوجونگ، خیابان سونگنام‌دِرو ۱۳۴۲">
-  경기 성남시 수정구 성남대로 1342
+<div class="address-row">
+
+  <div class="address"
+       data-ko="경기 성남시 수정구 성남대로 1342"
+       data-en="1342 Seongnam-daero, Sujeong-gu, Seongnam-si, Gyeonggi-do"
+       data-fa="استان گیونگ‌گی، شهر سونگنام، منطقه سوجونگ، خیابان سونگنام‌دِرو ۱۳۴۲">
+    경기 성남시 수정구 성남대로 1342
+  </div>
+
+  <button
+    class="address-copy-button"
+    onclick="copyAddress(event)"
+    aria-label="주소 복사"
+  >
+    ⧉
+  </button>
+
 </div>
 
   </div>
