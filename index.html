@@ -1266,7 +1266,33 @@ languageButton.addEventListener("click", function (event) {
 document.addEventListener("click", function () {
   languageMenu.classList.remove("open");
 });
+/* LANGUAGE CHANGE */
 
+function changeLanguage(language) {
+
+  const elements = document.querySelectorAll("[data-ko]");
+
+  elements.forEach(function(element) {
+
+    if (language === "ko") {
+      element.textContent = element.getAttribute("data-ko");
+    }
+
+    if (language === "en") {
+      element.textContent = element.getAttribute("data-en");
+    }
+
+    if (language === "fa") {
+      element.textContent = element.getAttribute("data-fa");
+    }
+
+  });
+
+  document.getElementById("languageButton").textContent =
+    language === "ko" ? "한국어" :
+    language === "en" ? "English" :
+    "فارسی";
+}
 
   
 </script>
