@@ -1296,7 +1296,7 @@ document.addEventListener("click", function () {
 /* LANGUAGE CHANGE */
 
 function changeLanguage(language) {
-
+  document.documentElement.dir = language === "fa" ? "rtl" : "ltr";
   const elements = document.querySelectorAll("[data-ko]");
 
   elements.forEach(function(element) {
