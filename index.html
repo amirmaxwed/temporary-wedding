@@ -8,6 +8,7 @@
 <title>Sophy ♥ Max</title>
 
 <style>
+ 
 .wedding-footer {
   text-align: center;
   padding: 35px 20px 45px;
@@ -563,6 +564,20 @@ body {
 
 }
 
+/* Scroll-up animation */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.scroll-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+  
 </style>
 </head>
 
@@ -1030,6 +1045,9 @@ musicButton.addEventListener("click", () => {
     musicButton.classList.remove("playing");
   }
 });
+
+
+
   
 </script>
 
