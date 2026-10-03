@@ -1400,7 +1400,25 @@ function changeLanguage(language) {
     language === "en" ? "English" :
     "فارسی";
 }
+function shareInvitation() {
 
+  if (navigator.share) {
+
+    navigator.share({
+      title: "Max ♥ Sophy Wedding Invitation",
+      text: "We would be happy to have you with us on our special day.",
+      url: window.location.href
+    });
+
+  } else {
+
+    navigator.clipboard.writeText(window.location.href);
+
+    alert("Invitation link copied!");
+
+  }
+
+}
   
 </script>
 <div class="share-section">
