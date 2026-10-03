@@ -506,6 +506,30 @@ body {
   background: rgba(255, 255, 255, 0.25);
 }
 
+.share-section {
+  text-align: center;
+  margin: 25px auto 20px;
+}
+
+.share-button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  background: #47713b;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+
+.share-button:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+  
 @media (max-width: 600px) {
 
   .lightbox-arrow {
@@ -1379,7 +1403,15 @@ function changeLanguage(language) {
 
   
 </script>
+<div class="share-section">
+  <button class="share-button" onclick="shareInvitation()">
+    ♡ 초대장 공유하기
+  </button>
+</div>
 
+<footer class="wedding-footer">
+  <div>Max <span>♥</span> Sophy</div>
+  <div>2026.11.14 6:40 PM</div>
 <footer class="wedding-footer">
   <div>Max <span>♥</span> Sophy</div>
   <div>2026.11.14 6:40 PM</div>
