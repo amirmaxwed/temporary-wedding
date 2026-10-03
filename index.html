@@ -409,7 +409,56 @@ body {
   line-height: 1;
   cursor: pointer;
 }
+.lightbox-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 70px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 48px;
+  font-family: Arial, sans-serif;
+  font-weight: 200;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.lightbox-prev {
+  left: 15px;
+}
+
+.lightbox-next {
+  right: 15px;
+}
+
+.lightbox-arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 600px) {
+
+  .lightbox-arrow {
+    width: 38px;
+    height: 60px;
+    font-size: 42px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .lightbox-prev {
+    left: 5px;
+  }
+
+  .lightbox-next {
+    right: 5px;
+  }
+
+}
 
 /* ACCOUNT SECTION */
 
@@ -854,11 +903,15 @@ body {
 
 <!-- LIGHTBOX -->
 
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<div class="lightbox" id="lightbox">
 
-  <span class="lightbox-close">&times;</span>
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+
+  <button class="lightbox-arrow lightbox-prev" onclick="previousPhoto(event)">‹</button>
 
   <img id="lightbox-image" src="" alt="Wedding photo">
+
+  <button class="lightbox-arrow lightbox-next" onclick="nextPhoto(event)">›</button>
 
 </div>
 
@@ -1018,12 +1071,31 @@ function copyAccount(accountNumber, event) {
 
 /* LIGHTBOX */
 
+/* LIGHTBOX GALLERY */
+
+const galleryPhotos = [
+  "photo1.webp",
+  "photo2.webp",
+  "photo3.webp",
+  "photo4.webp",
+  "photo5.webp"
+];
+
+let currentPhotoIndex = 0;
+
+
 function openLightbox(image) {
 
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightbox-image");
 
-  lightboxImage.src = image;
+  currentPhotoIndex = galleryPhotos.indexOf(image);
+
+  if (currentPhotoIndex === -1) {
+    currentPhotoIndex = 0;
+  }
+
+  lightboxImage.src = galleryPhotos[currentPhotoIndex];
   lightbox.classList.add("active");
 
 }
@@ -1032,6 +1104,38 @@ function openLightbox(image) {
 function closeLightbox() {
 
   document.getElementById("lightbox").classList.remove("active");
+
+}
+
+
+function previousPhoto(event) {
+
+  event.stopPropagation();
+
+  currentPhotoIndex--;
+
+  if (currentPhotoIndex < 0) {
+    currentPhotoIndex = galleryPhotos.length - 1;
+  }
+
+  document.getElementById("lightbox-image").src =
+    galleryPhotos[currentPhotoIndex];
+
+}
+
+
+function nextPhoto(event) {
+
+  event.stopPropagation();
+
+  currentPhotoIndex++;
+
+  if (currentPhotoIndex >= galleryPhotos.length) {
+    currentPhotoIndex = 0;
+  }
+
+  document.getElementById("lightbox-image").src =
+    galleryPhotos[currentPhotoIndex];
 
 }
 
