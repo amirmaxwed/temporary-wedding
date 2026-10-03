@@ -1182,6 +1182,25 @@ body {
 
 <script>
 
+function copyAddress(event) {
+
+  const address = document.querySelector(".address").textContent.trim();
+
+  navigator.clipboard.writeText(address).then(function () {
+
+    const button = event.currentTarget;
+    const original = button.textContent;
+
+    button.textContent = "✓";
+
+    setTimeout(function () {
+      button.textContent = original;
+    }, 1200);
+
+  });
+
+}
+  
 /* COUNTDOWN */
 
 const weddingDate = new Date("2026-11-14T18:40:00+09:00").getTime();
