@@ -567,12 +567,16 @@ body {
 /* Scroll-up animation */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(45px);
+  transform: translateY(60px);
   transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
+    opacity 1s ease,
+    transform 1s ease;
 }
 
+.scroll-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 .scroll-reveal.show {
   opacity: 1;
   transform: translateY(0);
@@ -1052,33 +1056,29 @@ const revealElements = document.querySelectorAll(
   ".intro, .date-section, .ceremony-section, .happy-time, .gallery, .account-section, .wedding-footer"
 );
 
-/* Hide all sections first */
+/* Hide each section first */
 revealElements.forEach(function (element) {
   element.classList.add("scroll-reveal");
 });
 
-/* Show sections when they enter the screen */
+/* Show each section separately when it enters the screen */
 const revealObserver = new IntersectionObserver(
   function (entries) {
     entries.forEach(function (entry) {
-
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
         revealObserver.unobserve(entry.target);
       }
-
     });
   },
   {
-    threshold: 0.15
+    threshold: 0.25
   }
 );
 
-/* Start watching each section */
 revealElements.forEach(function (element) {
   revealObserver.observe(element);
 });
-
   
 </script>
 
