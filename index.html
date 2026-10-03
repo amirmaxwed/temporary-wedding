@@ -1318,32 +1318,36 @@ musicButton.addEventListener("click", () => {
 
 /* SCROLL-UP REVEAL EFFECT */
 
-const revealElements = document.querySelectorAll(
-  ".intro, .date-section, .ceremony-section, .happy-time, .gallery, .account-section, .wedding-footer"
-);
+window.addEventListener("load", function () {
 
-/* Hide each section first */
-revealElements.forEach(function (element) {
-  element.classList.add("scroll-reveal");
-});
+  const revealElements = document.querySelectorAll(
+    ".intro, .date-section, .ceremony-section, .happy-time, .gallery, .account-section, .share-section, .wedding-footer"
+  );
 
-/* Show each section separately when it enters the screen */
-const revealObserver = new IntersectionObserver(
-  function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.25
-  }
-);
+  /* Hide each section first */
+  revealElements.forEach(function (element) {
+    element.classList.add("scroll-reveal");
+  });
 
-revealElements.forEach(function (element) {
-  revealObserver.observe(element);
+  /* Show each section separately when it enters the screen */
+  const revealObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.25
+    }
+  );
+
+  revealElements.forEach(function (element) {
+    revealObserver.observe(element);
+  });
+
 });
 
 /* LANGUAGE MENU */
