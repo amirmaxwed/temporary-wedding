@@ -1046,7 +1046,38 @@ musicButton.addEventListener("click", () => {
   }
 });
 
+/* SCROLL-UP REVEAL EFFECT */
 
+document.addEventListener("DOMContentLoaded", function () {
+
+  const revealElements = document.querySelectorAll(
+    ".intro, .date-section, .ceremony-section, .happy-time, .gallery, .account-section, .wedding-footer"
+  );
+
+  const revealObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("scroll-reveal");
+          
+          setTimeout(function () {
+            entry.target.classList.add("show");
+          }, 50);
+
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15
+    }
+  );
+
+  revealElements.forEach(function (element) {
+    revealObserver.observe(element);
+  });
+
+});
 
   
 </script>
