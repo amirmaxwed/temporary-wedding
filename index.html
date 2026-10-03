@@ -41,6 +41,63 @@
 .music-button.playing {
   font-size: 19px;
 }
+
+/* LANGUAGE SELECTOR */
+
+.language-selector {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+}
+
+.language-button {
+  min-width: 72px;
+  height: 42px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 21px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #555;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.language-menu {
+  display: none;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  min-width: 100px;
+  padding: 6px 0;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.language-menu.open {
+  display: block;
+}
+
+.language-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  color: #555;
+  font-family: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.language-menu button:hover {
+  background: #e2f5c9;
+}
   
 * {
   box-sizing: border-box;
@@ -642,7 +699,19 @@ body {
 <button id="musicButton" class="music-button" aria-label="Play music">
   ♪
 </button>
+<!-- LANGUAGE SELECTOR -->
 
+<div class="language-selector">
+  <button class="language-button" id="languageButton">
+    한국어
+  </button>
+
+  <div class="language-menu" id="languageMenu">
+    <button onclick="changeLanguage('ko')">한국어</button>
+    <button onclick="changeLanguage('en')">English</button>
+    <button onclick="changeLanguage('fa')">فارسی</button>
+  </div>
+</div>
 <!-- HERO -->
 
 <section class="hero">
@@ -1182,6 +1251,20 @@ const revealObserver = new IntersectionObserver(
 
 revealElements.forEach(function (element) {
   revealObserver.observe(element);
+});
+
+/* LANGUAGE MENU */
+
+const languageButton = document.getElementById("languageButton");
+const languageMenu = document.getElementById("languageMenu");
+
+languageButton.addEventListener("click", function (event) {
+  event.stopPropagation();
+  languageMenu.classList.toggle("open");
+});
+
+document.addEventListener("click", function () {
+  languageMenu.classList.remove("open");
 });
   
 </script>
