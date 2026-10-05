@@ -780,13 +780,28 @@ body {
 }
 
 .botanical-divider {
-  text-align: center;
-  margin: 18px 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0 18px;
   color: #78966b;
-  font-size: 20px;
+  font-size: 17px;
   line-height: 1;
-  opacity: 0.75;
-  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.botanical-divider::before,
+.botanical-divider::after {
+  content: "";
+  width: 45px;
+  height: 1px;
+  background: #b8cda9;
+}
+
+.botanical-divider span {
+  display: inline-block;
+  transform: scaleX(1.15);
 }
   
 </style>
