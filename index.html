@@ -27,7 +27,9 @@
 }
 
 .site-credit {
-  animation: creditMove 3s ease-in-out infinite;
+  animation:
+  creditMove 3s ease-in-out infinite,
+  creditShine 4s ease-in-out infinite;
 }
 
 @keyframes creditMove {
@@ -41,6 +43,15 @@
 
   100% {
     transform: translateX(-3px);
+  }
+}
+  @keyframes creditShine {
+  0%, 100% {
+    opacity: 0.75;
+  }
+
+  50% {
+    opacity: 1;
   }
 }
 .wedding-footer {
