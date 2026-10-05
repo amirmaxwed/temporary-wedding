@@ -27,20 +27,22 @@
 }
 
 .site-credit {
-  animation: creditFadeIn 1.2s ease-out both;
+  animation: creditMove 3s ease-in-out infinite;
 }
 
-@keyframes creditFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
+@keyframes creditMove {
+  0% {
+    transform: translateX(-3px);
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  50% {
+    transform: translateX(3px);
   }
-}  
+
+  100% {
+    transform: translateX(-3px);
+  }
+}
 .wedding-footer {
   text-align: center;
   padding: 35px 20px 45px;
