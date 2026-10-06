@@ -195,7 +195,27 @@ body {
   transform: translateY(60px);
   transition: opacity 1s ease, transform 1s ease;
 }
+.hero-transition {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 0 20px;
+  color: #78966b;
+  font-size: 15px;
+  opacity: 0.75;
+}
 
+.hero-transition::before,
+.hero-transition::after {
+  content: "";
+  width: 38px;
+  height: 1px;
+  background: #b8cda9;
+}
+
+.hero-transition span {
+  margin: 0 10px;
+}
 .hero-names.show {
   opacity: 1;
   transform: translateY(0);
@@ -901,8 +921,12 @@ body {
 
     </div>
  <div class="hero-names">
-      <div class="hero-names-main">Max <span>♥</span> Sophy</div>
-    </div>
+  <div class="hero-names-main">Max <span>♥</span> Sophy</div>
+</div>
+
+<div class="hero-transition">
+  <span>❦</span>
+</div>
   </div>
 
 </section>
