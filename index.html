@@ -191,8 +191,15 @@ body {
 .hero-names {
   text-align: center;
   padding: 28px 20px 8px;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
+.hero-names.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 .hero-names-main {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 28px;
@@ -1480,15 +1487,28 @@ musicButton.addEventListener("click", () => {
 
 window.addEventListener("load", function () {
 
- const revealElements = document.querySelectorAll(
-  ".hero-names, .intro, .date-section, .ceremony-section, .happy-time, .gallery, .account-section, .share-section, .wedding-footer"
+const revealElements = document.querySelectorAll(
+  ".intro, .date-section, .ceremony-section, .happy-time, .gallery, .account-section, .share-section, .wedding-footer"
 );
 
   /* Hide each section first */
   revealElements.forEach(function (element) {
     element.classList.add("scroll-reveal");
   });
+window.addEventListener("scroll", function () {
 
+  const heroNames = document.querySelector(".hero-names");
+
+  if (!heroNames) return;
+
+  const position = heroNames.getBoundingClientRect();
+
+  if (position.top < window.innerHeight * 0.9) {
+    heroNames.classList.add("show");
+  }
+
+});
+  
   /* Show each section separately when it enters the screen */
   const revealObserver = new IntersectionObserver(
     function (entries) {
