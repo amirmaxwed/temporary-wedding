@@ -588,10 +588,25 @@ body {
   position: fixed;
   z-index: 9999;
   inset: 0;
-  background: rgba(0, 0, 0, 0.88);
+  background: rgba(0, 0, 0, 0);
   align-items: center;
   justify-content: center;
   padding: 20px;
+}
+
+.lightbox.active {
+  display: flex;
+  animation: lightboxFadeIn 0.45s ease forwards;
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  to {
+    background: rgba(0, 0, 0, 0.88);
+  }
 }
 
 .lightbox.active {
@@ -603,13 +618,23 @@ body {
   max-height: 90vh;
   object-fit: contain;
   opacity: 0;
-  transform: scale(0.82);
-  transition: opacity 0.5s ease, transform 0.6s ease;
+  transform: scale(0.80);
 }
 
 .lightbox.active img {
-  opacity: 1;
-  transform: scale(1);
+  animation: photoZoomIn 0.7s ease forwards;
+}
+
+@keyframes photoZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.80);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 .lightbox-close {
   position: fixed;
