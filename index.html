@@ -82,7 +82,19 @@
 .music-button.playing {
   font-size: 19px;
 }
+.music-button.playing {
+  animation: musicPulse 1.8s ease-in-out infinite;
+}
 
+@keyframes musicPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
 /* LANGUAGE SELECTOR */
 
 .language-selector {
