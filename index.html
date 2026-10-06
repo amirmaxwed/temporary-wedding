@@ -202,7 +202,14 @@ body {
   margin: 8px 0 20px;
   color: #78966b;
   font-size: 15px;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.hero-transition.show {
   opacity: 0.75;
+  transform: translateY(0);
 }
 
 .hero-transition::before,
@@ -1543,7 +1550,19 @@ window.addEventListener("scroll", function () {
   }
 
 });
-  
+  window.addEventListener("scroll", function () {
+
+  const heroTransition = document.querySelector(".hero-transition");
+
+  if (!heroTransition) return;
+
+  const position = heroTransition.getBoundingClientRect();
+
+  if (position.top < window.innerHeight * 0.9) {
+    heroTransition.classList.add("show");
+  }
+
+});
   /* Show each section separately when it enters the screen */
   const revealObserver = new IntersectionObserver(
     function (entries) {
