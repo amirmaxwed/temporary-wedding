@@ -1082,9 +1082,38 @@ body {
 .gallery-password-error.show {
   display: block;
 }
+/* PROTECTED GALLERY COVER */
 
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-protected-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.80);
+
+  color: white;
+  font-size: 28px;
+
+  pointer-events: none;
+
+  transition: opacity 0.4s ease;
+}
+
+.gallery-unlocked .gallery-protected-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
 </style> 
-</style>
+
 </head>
 
 <body>
