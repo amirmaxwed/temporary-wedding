@@ -1419,25 +1419,55 @@ body {
 
 <section class="gallery" dir="ltr">
 
-  <button class="gallery-item" onclick="openLightbox('photo1.webp')">
-    <img src="photo1.webp" alt="Wedding photo 1">
-  </button>
+ <button class="gallery-item" onclick="openLightbox('photo1.webp')">
+
+  <img src="photo1.webp" alt="Wedding photo 1">
+
+  <span class="gallery-protected-overlay">
+    🔒
+  </span>
+
+</button>
 
   <button class="gallery-item" onclick="openLightbox('photo2.webp')">
-    <img src="photo2.webp" alt="Wedding photo 2">
-  </button>
+
+  <img src="photo2.webp" alt="Wedding photo 2">
+
+  <span class="gallery-protected-overlay">
+    🔒
+  </span>
+
+</button>
 
   <button class="gallery-item" onclick="openLightbox('photo3.webp')">
-    <img src="photo3.webp" alt="Wedding photo 3">
-  </button>
 
-  <button class="gallery-item large" onclick="openLightbox('photo4.webp')">
-    <img src="photo4.webp" alt="Wedding photo 4">
-  </button>
+  <img src="photo3.webp" alt="Wedding photo 3">
 
-  <button class="gallery-item large" onclick="openLightbox('photo5.webp')">
-    <img src="photo5.webp" alt="Wedding photo 5">
-  </button>
+  <span class="gallery-protected-overlay">
+    🔒
+  </span>
+
+</button>
+
+ <button class="gallery-item large" onclick="openLightbox('photo4.webp')">
+
+  <img src="photo4.webp" alt="Wedding photo 4">
+
+  <span class="gallery-protected-overlay">
+    🔒
+  </span>
+
+</button>
+
+ <button class="gallery-item large" onclick="openLightbox('photo5.webp')">
+
+  <img src="photo5.webp" alt="Wedding photo 5">
+
+  <span class="gallery-protected-overlay">
+    🔒
+  </span>
+
+</button>
 
 </section>
 
@@ -1692,7 +1722,38 @@ function copyAccount(accountNumber, event) {
   }, 1200);
 
 }
+/* PROTECTED GALLERY COVER */
 
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-protected-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.80);
+
+  color: white;
+  font-size: 28px;
+
+  pointer-events: none;
+
+  transition: opacity 0.4s ease;
+}
+
+/* Hide the covers after the gallery is unlocked */
+
+.gallery-unlocked .gallery-protected-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* LIGHTBOX */
 
@@ -1709,6 +1770,7 @@ const galleryPhotos = [
 let currentPhotoIndex = 0;
 
 sessionStorage.removeItem("galleryUnlocked");
+  document.querySelector(".gallery")?.classList.remove("gallery-unlocked");
 function openLightbox(image) {
 
   const galleryPassword = document.getElementById("galleryPassword");
@@ -1794,9 +1856,11 @@ function checkGalleryPassword() {
 
   if (passwordInput.value === correctPassword) {
 
-    sessionStorage.setItem("galleryUnlocked", "true");
+   sessionStorage.setItem("galleryUnlocked", "true");
 
-    galleryPassword.classList.remove("active");
+document.querySelector(".gallery").classList.add("gallery-unlocked");
+
+galleryPassword.classList.remove("active");
 
     passwordInput.value = "";
 
