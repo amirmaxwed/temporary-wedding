@@ -720,7 +720,85 @@ body {
   }
 
 }
+/* GALLERY PASSWORD */
 
+.gallery-password {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.55);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.gallery-password.active {
+  display: flex;
+}
+
+.gallery-password-box {
+  width: 320px;
+  max-width: 90%;
+  padding: 30px 25px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-password-box h3 {
+  margin: 0 0 10px;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.gallery-password-box p {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+}
+
+#galleryPasswordInput {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  text-align: center;
+  font-family: inherit;
+}
+
+#galleryPasswordInput:focus {
+  border-color: #9fc28f;
+}
+
+.gallery-password-box button {
+  width: 100%;
+  height: 44px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 22px;
+  background: #47713b;
+  color: white;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.gallery-password-box button:hover {
+  opacity: 0.85;
+}
+
+.gallery-password-box .gallery-password-close {
+  background: #eeeeee;
+  color: #555;
+}
 /* ACCOUNT SECTION */
 
 .account-section {
@@ -918,7 +996,94 @@ body {
   display: inline-block;
   transform: scaleX(1.15);
 }
-  
+ .some-existing-css {
+  ...
+}
+
+
+/* GALLERY PASSWORD */
+
+.gallery-password {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.gallery-password.active {
+  display: flex;
+}
+
+.gallery-password-box {
+  width: 320px;
+  max-width: 100%;
+  padding: 30px 25px;
+  box-sizing: border-box;
+  background: #e2f5c9;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-password-box h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #40523a;
+}
+
+.gallery-password-box p {
+  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #596653;
+}
+
+.gallery-password-box input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid #b8d69a;
+  border-radius: 6px;
+  background: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.gallery-password-box button {
+  width: 100%;
+  height: 44px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #b8d69a;
+  color: #40523a;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.gallery-password-box button:hover {
+  opacity: 0.85;
+}
+
+.gallery-password-error {
+  display: none;
+  margin-top: 12px !important;
+  margin-bottom: 0 !important;
+  color: #a35b5b !important;
+}
+
+.gallery-password-error.show {
+  display: block;
+}
+
+</style> 
 </style>
 </head>
 
@@ -1278,7 +1443,33 @@ body {
 
 
 <!-- LIGHTBOX -->
+<!-- GALLERY PASSWORD -->
 
+<div class="gallery-password" id="galleryPassword">
+
+  <div class="gallery-password-box">
+
+    <h3>Private Photos</h3>
+
+    <p>Please enter the password to view our photos.</p>
+
+    <input
+      type="password"
+      id="galleryPasswordInput"
+      placeholder="Password"
+    >
+
+    <button onclick="checkGalleryPassword()">
+      Enter
+    </button>
+
+    <p class="gallery-password-error" id="galleryPasswordError">
+      Incorrect password
+    </p>
+
+  </div>
+
+</div>
 <div class="lightbox" id="lightbox">
 
   <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
@@ -1291,7 +1482,40 @@ body {
 
 </div>
 
+<!-- GALLERY PASSWORD -->
 
+<div class="gallery-password" id="galleryPassword">
+
+  <div class="gallery-password-box">
+
+    <h3>Private Gallery</h3>
+
+    <p>Please enter the password to view the photos.</p>
+
+    <input
+      type="password"
+      id="galleryPasswordInput"
+      placeholder="Password"
+      autocomplete="off"
+    >
+
+    <button onclick="checkGalleryPassword()">Enter</button>
+
+    <button
+      class="gallery-password-close"
+      onclick="document.getElementById('galleryPassword').classList.remove('active')"
+    >
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ACCOUNT -->
+
+<section class="account-section">
 <!-- ACCOUNT -->
 
 <section class="account-section">
@@ -1487,20 +1711,25 @@ let currentPhotoIndex = 0;
 
 function openLightbox(image) {
 
+  const galleryPassword = document.getElementById("galleryPassword");
   const lightbox = document.getElementById("lightbox");
-  const lightboxImage = document.getElementById("lightbox-image");
 
-  currentPhotoIndex = galleryPhotos.indexOf(image);
+  if (sessionStorage.getItem("galleryUnlocked") === "true") {
 
-  if (currentPhotoIndex === -1) {
-    currentPhotoIndex = 0;
+    const lightboxImage = document.getElementById("lightbox-image");
+
+    lightboxImage.src = image;
+    lightbox.classList.add("active");
+
+  } else {
+
+    galleryPassword.classList.add("active");
+
+    document.getElementById("galleryPasswordInput").focus();
+
   }
 
-  lightboxImage.src = galleryPhotos[currentPhotoIndex];
-  lightbox.classList.add("active");
-
 }
-
 
 function closeLightbox() {
 
@@ -1556,7 +1785,29 @@ musicButton.addEventListener("click", () => {
 });
 
 /* SCROLL-UP REVEAL EFFECT */
+function checkGalleryPassword() {
 
+  const passwordInput = document.getElementById("galleryPasswordInput");
+  const galleryPassword = document.getElementById("galleryPassword");
+
+  const correctPassword = "1234";
+
+  if (passwordInput.value === correctPassword) {
+
+    sessionStorage.setItem("galleryUnlocked", "true");
+
+    galleryPassword.classList.remove("active");
+
+    passwordInput.value = "";
+
+  } else {
+
+    alert("Incorrect password.");
+    passwordInput.value = "";
+    passwordInput.focus();
+
+  }
+}
 window.addEventListener("load", function () {
 
 const revealElements = document.querySelectorAll(
