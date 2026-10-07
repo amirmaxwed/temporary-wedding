@@ -1708,7 +1708,7 @@ const galleryPhotos = [
 
 let currentPhotoIndex = 0;
 
-
+sessionStorage.removeItem("galleryUnlocked");
 function openLightbox(image) {
 
   const galleryPassword = document.getElementById("galleryPassword");
