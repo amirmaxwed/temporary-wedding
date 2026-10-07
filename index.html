@@ -1089,10 +1089,13 @@ body {
   overflow: hidden;
 }
 
-.gallery-protected-overlay {
+.gallery-item .gallery-protected-overlay {
   position: absolute;
-  inset: 0;
-  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
 
   display: flex;
   align-items: center;
@@ -1100,17 +1103,17 @@ body {
 
   background: rgba(0, 0, 0, 0.80);
 
-  color: white;
+  color: #ffffff;
   font-size: 28px;
 
   pointer-events: none;
+  opacity: 1;
 
   transition: opacity 0.4s ease;
 }
 
-.gallery-unlocked .gallery-protected-overlay {
+.gallery-unlocked .gallery-item .gallery-protected-overlay {
   opacity: 0;
-  pointer-events: none;
 }
 </style> 
 
