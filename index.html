@@ -1808,6 +1808,16 @@ function checkGalleryPassword() {
 
   }
 }
+
+  document.getElementById("galleryPassword").addEventListener("click", function(event) {
+
+  if (event.target === this) {
+    this.classList.remove("active");
+
+    document.getElementById("galleryPasswordInput").value = "";
+  }
+
+});
 window.addEventListener("load", function () {
 
 const revealElements = document.querySelectorAll(
