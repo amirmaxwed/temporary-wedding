@@ -46,11 +46,42 @@ export default {
 
 
     // CURRENT GALLERY PASSWORD
-    if (url.pathname === "/api/gallery-password") {
+   if (url.pathname === "/api/gallery-password") {
 
-      const password = await createPassword(env.GALLERY_SECRET);
+  try {
 
-      return new Response(
+    const password = await createPassword(env.GALLERY_SECRET);
+
+    return new Response(
+      JSON.stringify({
+        password: password,
+        expiresIn: PASSWORD_INTERVAL - (Date.now() % PASSWORD_INTERVAL)
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-store"
+        }
+      }
+    );
+
+  } catch (error) {
+
+    return new Response(
+      JSON.stringify({
+        error: String(error)
+      }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-store"
+        }
+      }
+    );
+
+  }
+}
         JSON.stringify({
           password: password,
           expiresIn: PASSWORD_INTERVAL - (Date.now() % PASSWORD_INTERVAL)
