@@ -30,12 +30,10 @@ async function createPassword(secret) {
   return String(number).padStart(6, "0");
 }
 
-
 export default {
   async fetch(request, env) {
 
     const url = new URL(request.url);
-
 
     // TEST
     if (url.pathname === "/api/test") {
@@ -44,57 +42,43 @@ export default {
       });
     }
 
-
     // CURRENT GALLERY PASSWORD
-   if (url.pathname === "/api/gallery-password") {
+    if (url.pathname === "/api/gallery-password") {
 
-  try {
+      try {
 
-    const password = await createPassword(env.GALLERY_SECRET);
+        const password = await createPassword(env.GALLERY_SECRET);
 
-    return new Response(
-      JSON.stringify({
-        password: password,
-        expiresIn: PASSWORD_INTERVAL - (Date.now() % PASSWORD_INTERVAL)
-      }),
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Cache-Control": "no-store"
-        }
-      }
-    );
-
-  } catch (error) {
-
-    return new Response(
-      JSON.stringify({
-        error: String(error)
-      }),
-      {
-        status: 500,
-        headers: {
-          "Content-Type": "application/json",
-          "Cache-Control": "no-store"
-        }
-      }
-    );
-
-  }
-}
-        JSON.stringify({
-          password: password,
-          expiresIn: PASSWORD_INTERVAL - (Date.now() % PASSWORD_INTERVAL)
-        }),
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Cache-Control": "no-store"
+        return new Response(
+          JSON.stringify({
+            password: password,
+            expiresIn: PASSWORD_INTERVAL - (Date.now() % PASSWORD_INTERVAL)
+          }),
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "Cache-Control": "no-store"
+            }
           }
-        }
-      );
-    }
+        );
 
+      } catch (error) {
+
+        return new Response(
+          JSON.stringify({
+            error: String(error)
+          }),
+          {
+            status: 500,
+            headers: {
+              "Content-Type": "application/json",
+              "Cache-Control": "no-store"
+            }
+          }
+        );
+
+      }
+    }
 
     // EVERYTHING ELSE
     return env.ASSETS.fetch(request);
