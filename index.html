@@ -1794,7 +1794,7 @@ function openLightbox(image) {
 
     const lightboxImage = document.getElementById("lightbox-image");
 
-    lightboxImage.src = image;
+   lightboxImage.src = protectedPhotoUrl(image);
     lightbox.classList.add("active");
 
   } else {
@@ -1840,9 +1840,8 @@ function nextPhoto(event) {
     currentPhotoIndex = 0;
   }
 
-  document.getElementById("lightbox-image").src =
-    galleryPhotos[currentPhotoIndex];
-
+ document.getElementById("lightbox-image").src =
+    protectedPhotoUrl(galleryPhotos[currentPhotoIndex]);
 }
 
 const weddingMusic = document.getElementById("weddingMusic");
