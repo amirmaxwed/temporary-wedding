@@ -75,19 +75,17 @@ export default {
           );
         }
 
-        if (!env.GALLERY_TOKEN_SECRET) {
-          return new Response("Gallery token secret is missing", {
-            status: 500,
-            headers: { "Cache-Control": "no-store" }
-          });
-        }
-
+       if (!env.GALLERY_SECRET) {
+  return new Response("Gallery secret is missing", {
+    status: 500,
+    headers: { "Cache-Control": "no-store" }
+  });
+}
         const expiry = Date.now() + TOKEN_LIFETIME;
-        const signature = await signToken(
-          expiry,
-          env.GALLERY_TOKEN_SECRET
-        );
-
+       const signature = await signToken(
+  expiry,
+  env.GALLERY_SECRET
+);
         return Response.json(
           {
             success: true,
@@ -111,10 +109,10 @@ export default {
     if (url.pathname.startsWith("/private/")) {
       const token = url.searchParams.get("token");
 
-      const valid = await verifyToken(
-        token,
-        env.GALLERY_TOKEN_SECRET
-      );
+     const valid = await verifyToken(
+  token,
+  env.GALLERY_SECRET
+);
 
       if (!valid) {
         return new Response("Access denied", {
