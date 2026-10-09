@@ -1769,14 +1769,19 @@ function copyAccount(accountNumber, event) {
 /* LIGHTBOX GALLERY */
 
 const galleryPhotos = [
-  "photo1.webp",
-  "photo2.webp",
-  "photo3.webp",
-  "photo4.webp",
-  "photo5.webp"
+  "/private/photo1.webp",
+  "/private/photo2.webp",
+  "/private/photo3.webp",
+  "/private/photo4.webp",
+  "/private/photo5.webp"
 ];
 
 let currentPhotoIndex = 0;
+  function protectedPhotoUrl(path) {
+  const token = sessionStorage.getItem("galleryToken");
+
+  return path + "?token=" + encodeURIComponent(token);
+}
 
 sessionStorage.removeItem("galleryUnlocked");
   
@@ -1883,6 +1888,7 @@ async function checkGalleryPassword() {
 
     if (result.success) {
       sessionStorage.setItem("galleryUnlocked", "true");
+      sessionStorage.setItem("galleryToken", result.token);
       gallery.classList.add("gallery-unlocked");
       galleryPassword.classList.remove("active");
       passwordInput.value = "";
