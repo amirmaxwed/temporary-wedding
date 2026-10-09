@@ -1459,19 +1459,9 @@ body {
 
 <section class="gallery" dir="ltr">
 
- <button class="gallery-item" onclick="openLightbox('photo1.webp')">
+ <button class="gallery-item" onclick="openLightbox('/private/photo1.webp')"
 
-  <img src="photo1.webp" alt="Wedding photo 1">
-
-  <span class="gallery-protected-overlay">
-    🔒
-  </span>
-
-</button>
-
-  <button class="gallery-item" onclick="openLightbox('photo2.webp')">
-
-  <img src="photo2.webp" alt="Wedding photo 2">
+ <img data-photo="/private/photo1.webp" alt="Wedding photo 1">
 
   <span class="gallery-protected-overlay">
     🔒
@@ -1479,19 +1469,9 @@ body {
 
 </button>
 
-  <button class="gallery-item" onclick="openLightbox('photo3.webp')">
+  <button class="gallery-item" onclick="openLightbox('/private/photo2.webp')"
 
-  <img src="photo3.webp" alt="Wedding photo 3">
-
-  <span class="gallery-protected-overlay">
-    🔒
-  </span>
-
-</button>
-
- <button class="gallery-item large" onclick="openLightbox('photo4.webp')">
-
-  <img src="photo4.webp" alt="Wedding photo 4">
+ <img data-photo="/private/photo2.webp" alt="Wedding photo 2">
 
   <span class="gallery-protected-overlay">
     🔒
@@ -1499,10 +1479,29 @@ body {
 
 </button>
 
- <button class="gallery-item large" onclick="openLightbox('photo5.webp')">
+  <button class="gallery-item" onclick="openLightbox('/private/photo3.webp')"
 
-  <img src="photo5.webp" alt="Wedding photo 5">
+ <img data-photo="/private/photo3.webp" alt="Wedding photo 3">
 
+  <span class="gallery-protected-overlay">
+    🔒
+  </span>
+
+</button>
+
+ <button class="gallery-item large" onclick="openLightbox('/private/photo4.webp')"
+
+ <img data-photo="/private/photo4.webp" alt="Wedding photo 4">
+
+  <span class="gallery-protected-overlay">
+    🔒
+  </span>
+
+</button>
+
+ <button class="gallery-item large" onclick="openLightbox('/private/photo5.webp')"
+
+  <img data-photo="/private/photo5.webp" alt="Wedding photo 5">
   <span class="gallery-protected-overlay">
     🔒
   </span>
@@ -1784,6 +1783,7 @@ let currentPhotoIndex = 0;
 }
 
 sessionStorage.removeItem("galleryUnlocked");
+  sessionStorage.removeItem("galleryToken");
   
 function openLightbox(image) {
 
@@ -1888,6 +1888,9 @@ async function checkGalleryPassword() {
     if (result.success) {
       sessionStorage.setItem("galleryUnlocked", "true");
       sessionStorage.setItem("galleryToken", result.token);
+      document.querySelectorAll(".gallery-item img").forEach((img) => {
+  img.src = protectedPhotoUrl(img.dataset.photo);
+});
       gallery.classList.add("gallery-unlocked");
       galleryPassword.classList.remove("active");
       passwordInput.value = "";
