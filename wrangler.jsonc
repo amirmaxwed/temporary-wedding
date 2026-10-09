@@ -4,8 +4,7 @@
   "compatibility_date": "2026-10-02",
  "secrets": {
   "required": [
-    "GALLERY_SECRET",
-    "GALLERY_TOKEN_SECRET"
+    "GALLERY_SECRET"
   ]
 },
   "assets": {
