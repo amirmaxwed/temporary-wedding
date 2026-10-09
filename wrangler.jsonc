@@ -2,11 +2,12 @@
   "name": "temporary-wedding",
   "main": "./worker.js",
   "compatibility_date": "2026-10-02",
-  "secrets": {
-    "required": [
-      "GALLERY_SECRET"
-    ]
-  },
+ "secrets": {
+  "required": [
+    "GALLERY_SECRET",
+    "GALLERY_TOKEN_SECRET"
+  ]
+},
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
