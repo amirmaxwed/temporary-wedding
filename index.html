@@ -1824,8 +1824,8 @@ function previousPhoto(event) {
     currentPhotoIndex = galleryPhotos.length - 1;
   }
 
-  document.getElementById("lightbox-image").src =
-    galleryPhotos[currentPhotoIndex];
+ document.getElementById("lightbox-image").src =
+    protectedPhotoUrl(galleryPhotos[currentPhotoIndex]);
 
 }
 
