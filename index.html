@@ -1856,29 +1856,45 @@ musicButton.addEventListener("click", () => {
 });
 
 /* SCROLL-UP REVEAL EFFECT */
-function checkGalleryPassword() {
+async function checkGalleryPassword() {
 
   const passwordInput = document.getElementById("galleryPasswordInput");
   const galleryPassword = document.getElementById("galleryPassword");
+  const gallery = document.querySelector(".gallery");
 
-  const correctPassword = "1096";
+  const submittedPassword = passwordInput.value;
 
-  if (passwordInput.value === correctPassword) {
+  try {
+    const response = await fetch("/api/verify-gallery-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        password: submittedPassword
+      })
+    });
 
-   sessionStorage.setItem("galleryUnlocked", "true");
+    if (!response.ok) {
+      throw new Error("Password verification failed.");
+    }
 
-document.querySelector(".gallery").classList.add("gallery-unlocked");
+    const result = await response.json();
 
-galleryPassword.classList.remove("active");
+    if (result.success) {
+      sessionStorage.setItem("galleryUnlocked", "true");
+      gallery.classList.add("gallery-unlocked");
+      galleryPassword.classList.remove("active");
+      passwordInput.value = "";
+    } else {
+      alert("Incorrect password.");
+      passwordInput.value = "";
+      passwordInput.focus();
+    }
 
-    passwordInput.value = "";
-
-  } else {
-
-    alert("Incorrect password.");
-    passwordInput.value = "";
-    passwordInput.focus();
-
+  } catch (error) {
+    alert("Unable to verify the password. Please try again.");
+    console.error("Gallery password verification error:", error);
   }
 }
 
