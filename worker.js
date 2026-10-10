@@ -1,3 +1,4 @@
+```javascript
 const TOKEN_LIFETIME = 60 * 60 * 1000; // 1 hour
 
 function base64UrlEncode(bytes) {
@@ -62,6 +63,13 @@ export default {
         });
       }
 
+      if (!env.GALLERY_SECRET || !env.GALLERY_TOKEN_SECRET) {
+        return new Response("Gallery configuration is missing", {
+          status: 500,
+          headers: { "Cache-Control": "no-store" }
+        });
+      }
+
       try {
         const body = await request.json();
 
@@ -75,17 +83,13 @@ export default {
           );
         }
 
-       if (!env.GALLERY_SECRET) {
-  return new Response("Gallery secret is missing", {
-    status: 500,
-    headers: { "Cache-Control": "no-store" }
-  });
-}
         const expiry = Date.now() + TOKEN_LIFETIME;
-       const signature = await signToken(
-  expiry,
-  env.GALLERY_SECRET
-);
+
+        const signature = await signToken(
+          expiry,
+          env.GALLERY_TOKEN_SECRET
+        );
+
         return Response.json(
           {
             success: true,
@@ -109,10 +113,10 @@ export default {
     if (url.pathname.startsWith("/private/")) {
       const token = url.searchParams.get("token");
 
-     const valid = await verifyToken(
-  token,
-  env.GALLERY_SECRET
-);
+      const valid = await verifyToken(
+        token,
+        env.GALLERY_TOKEN_SECRET
+      );
 
       if (!valid) {
         return new Response("Access denied", {
@@ -137,3 +141,4 @@ export default {
     return env.ASSETS.fetch(request);
   }
 };
+```
