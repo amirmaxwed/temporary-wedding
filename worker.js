@@ -1,4 +1,3 @@
-```javascript
 const TOKEN_LIFETIME = 60 * 60 * 1000; // 1 hour
 
 function base64UrlEncode(bytes) {
@@ -141,4 +140,3 @@ export default {
     return env.ASSETS.fetch(request);
   }
 };
-```
